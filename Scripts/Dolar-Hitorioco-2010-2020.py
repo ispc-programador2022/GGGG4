@@ -2,11 +2,8 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 
-
 hist_diccionary = []
 variaciones_diccionary = []
-
-
 
 
 # Años a consultar / solo disponibe desde 2002 hasta 2020
@@ -15,7 +12,8 @@ years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
 meses = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","saptiembre","octubre","nobiembre","diciembre"]
 
 # Cabeceras de las tablas
-labels_tabla_historioco = ["Año","Mes","Compra","Venta"]
+# labels_tabla_historioco = ["Año","Mes","Compra","Venta"]
+labels_tabla_historioco = ["Fecha","Compra","Venta"]
 
 
 
@@ -50,26 +48,26 @@ for year in years:
     soup = BeautifulSoup(data, 'lxml')
     table = soup.find_all('table')
     
-    # La pagian cuenta con 3 tablas, me quedo con la segunda(1)
+    # La pagina cuenta con 3 tablas, me quedo con la segunda(1)
     tabla_dolar = table[1]
       
 
     for row in tabla_dolar.find_all('tr'):
         if j in rows_meses:
-            compra_m = row.find_all('td')[1]
-            venta_m = row.find_all('td')[3]
-            record_y = [year, meses[m], compra_m.get_text().strip(), venta_m.get_text().strip()]
+            compra_m = float(row.find_all('td')[1].get_text().strip().replace(",","."))
+            venta_m = float(row.find_all('td')[3].get_text().strip().replace(",","."))
+            record_y = [f"{year}/{m+1}/01", compra_m, venta_m]
             hist_diccionary.append(record_y)   
             m += 1
         j +=1
         
     t = 0
-    varaicion_compra = [str(year)]
-    varaicion_venta = [str(year)]
+    varaicion_compra = [F"{year}/01/01"]
+    varaicion_venta = [F"{year}/01/01"]
     for row in tabla_dolar.find_all('tr'):
         if t in rows_variaciones:
-            varaicion_compra.append(row.find_all('td')[1].get_text().strip())
-            varaicion_venta.append(row.find_all('td')[2].get_text().strip())
+            varaicion_compra.append(row.find_all('td')[1].get_text().strip().replace(",","."))
+            varaicion_venta.append(row.find_all('td')[2].get_text().strip().replace(",","."))
         t +=1
     varaicion_compra.append("compra")
     varaicion_venta.append("venta")
