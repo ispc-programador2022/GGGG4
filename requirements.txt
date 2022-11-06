@@ -1,9 +1,12 @@
+antiorm==1.2.1
 asttokens==2.1.0
 backcall==0.2.0
 beautifulsoup4==4.11.1
 certifi==2022.9.24
 charset-normalizer==2.1.1
 colorama==0.4.6
+db==0.1.1
+db-sqlite3==0.0.1
 debugpy==1.6.3
 decorator==5.1.1
 entrypoints==0.4
