@@ -1,0 +1,11 @@
+cd venv-gggg4
+cd Scripts
+activate
+cd ..
+cd ..
+cd Scripts
+py dolarHoy_scraping.py
+cd ..
+git add <nombre_archivo>
+git commit -m "[ADD] dolarHoy 2022-11-07"
+git push
