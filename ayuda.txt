@@ -9,3 +9,5 @@ cd ..
 git add <nombre_archivo>
 git commit -m "[ADD] dolarHoy 2022-11-07"
 git push
+
+otro paso mas
