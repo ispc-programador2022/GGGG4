@@ -5,13 +5,11 @@
 <h3>Cotización Dolar</h3>
 <p>Proyecto de scraping web.</p>
 
-Para crear un entorno virtual
-```
-virtualenv <nombre_entorno>
-```
 Para activar el entorno
 ```
-cd <nombre_entorno>\Script\activate
+cd <nombre_entorno>
+cd Script
+cd activate
 ```
 
 Para instalar las dependencias del proyecto .
