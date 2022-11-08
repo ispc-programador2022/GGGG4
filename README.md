@@ -9,7 +9,7 @@ Para activar el entorno
 ```
 cd <nombre_entorno>
 cd Script
-cd activate
+activate
 ```
 
 Para instalar las dependencias del proyecto .
