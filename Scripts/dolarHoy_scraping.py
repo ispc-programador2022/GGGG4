@@ -3,6 +3,8 @@ import requests
 import pandas as pd
 from datetime import datetime
 
+import dml_dolar_hoy
+
 def scraper():
     
     html_text = requests.get('https://dolarhoy.com/cotizacion-dolar-blue').text
@@ -57,9 +59,7 @@ def scraper():
                             dolarDic["venta"].append(p3.get_text())
     
     fecha = datetime.now().date()
+    dml_dolar_hoy.insertarDiarios(dolarDic)
     df = pd.DataFrame(dolarDic)
     df.to_csv(f'../data/diario/{fecha}-dolarHoy.csv', index=False, encoding='utf-8')
     return df
-
-
-scraper()
