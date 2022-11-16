@@ -82,7 +82,6 @@ df.to_csv(f'../data/historico_dolar.csv', index=False, encoding='utf-8', header=
 df_var = pd.DataFrame(variaciones_diccionary)
 df_var.to_csv(f'../data/variacion_historico_dolar.csv', index=False, encoding='utf-8', header=labels_tabla_variacion)
 
-
 print("Finalizado ...")
     
     
