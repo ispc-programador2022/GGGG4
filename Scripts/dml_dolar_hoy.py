@@ -15,6 +15,7 @@ def crearBaseDolarHoy():
     try:
         con.execute(f"""CREATE TABLE IF NOT EXISTS "dolarHoy" ("fecha" TEXT, "tipo" TEXT, "compra" TEXT, "venta" TEXT)""")
         con.commit()
+        print("Base creada con exito")
     except Exception() as e:
         print(e)
     finally:
@@ -32,6 +33,7 @@ def dropTable():
           
 
 def insertarDiarios(registroDiario):
+
     fecha = datetime.now().date()
     con = getConexion()
     cursor = con.cursor()
